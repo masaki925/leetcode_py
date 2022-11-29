@@ -7,22 +7,22 @@ class Solution:
         res = []
         sub = []
 
-        def dfs(i):
+        def backtrack(i):
             if i >= len(nums):
                 res.append(sub.copy())
                 return
 
             sub.append(nums[i])
-            dfs(i + 1)
+            backtrack(i + 1)
             sub.pop()
-            while i + 1 < len(nums) and nums[i] == nums[i + 1]:
+            while i < len(nums) - 1 and nums[i] == nums[i + 1]:
                 i += 1
-            dfs(i + 1)
+            backtrack(i + 1)
 
-        dfs(0)
+        backtrack(0)
 
         return res
 
 
 s = Solution()
-print(f"{s.subsetsWithDup([1,2,2])}")
+print(s.subsetsWithDup([1, 2, 2]))
